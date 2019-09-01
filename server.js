@@ -17,7 +17,7 @@ app.use(cors());
 app.use(serveStatic(path.join(__dirname, "dist")));
 
 app.post("/register", (req, res) => {
-  console.log("hello");
+  console.log("JWT encoder");
   var token = jwt.encode(`${req.body.jwttoken}`, `${req.body.clientid}`);
   res.send(`${token}`);
 });
