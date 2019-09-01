@@ -2,6 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
+				<v-toolbar app color="brown darken-4" dark></v-toolbar>
 				<h2>B2C String Builder</h2>Client ID:
 				<input type="text" v-model="clientid" />
 
@@ -18,7 +19,7 @@
 					{{radiosPreset}}
 				</p>
 
-				<h4>JWT Claims</h4>
+				<h4>JWT Token</h4>
 				<textarea v-model.lazy="textbox" cols="30" style="height: 150px;"></textarea>
 				<button class="default" v-on:click="encodeJWT">Encode JWT</button>
 				<p v-bind:style="fontColorObject">{{jwttoken}}</p>
