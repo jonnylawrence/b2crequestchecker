@@ -7,6 +7,7 @@ const serveStatic = require("serve-static");
 
 const app = express();
 const port = process.env.PORT || 80;
+const path = require("path");
 
 var jwt = require("jwt-simple");
 
