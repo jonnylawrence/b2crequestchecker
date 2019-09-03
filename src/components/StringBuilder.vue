@@ -107,14 +107,14 @@
 			propertywatch: function() {
 				this.urlrequest =
 					this.radiosTenant +
-					"&client_assertion=" +
+					"?client_assertion=" +
 					this.client_assertion +
-					"&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&clientid=" +
+					"&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_id=" +
 					this.appid +
 					"&nonce=" +
 					this.nonce +
 					"&prompt=login&redirect_uri=" +
-					this.redirect_uri +
+					encodeURIComponent(this.redirect_uri) +
 					"&response_mode=form_post&response_type=id_token&scope=openid+profile&state=" +
 					this.state +
 					"&ui_locales=" +
