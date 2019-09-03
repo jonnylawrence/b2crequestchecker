@@ -59,7 +59,7 @@
 				<textarea v-model="textbox" cols="60" style="height: 250px;"></textarea>
 				<br />
 				<br />
-				<small>VUE and node.js Jon Sutcliffe V1.0</small>
+				<small>Author: Jon Sutcliffe V1.0, developed using the client Javascript VUE framework and node.js</small>
 			</div>
 			<div class="col-6">
 				<button class="default" v-on:click="randomstring">Generate Nonce/State</button>
