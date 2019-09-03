@@ -57,6 +57,9 @@
 				<br />
 				<button class="default" v-on:click="encodeJWT">Encode JWT</button>
 				<textarea v-model="textbox" cols="60" style="height: 250px;"></textarea>
+				<br />
+				<br />
+				<small>VUE and node.js Jon Sutcliffe V1.0</small>
 			</div>
 			<div class="col-6">
 				<button class="default" v-on:click="randomstring">Generate Nonce/State</button>
