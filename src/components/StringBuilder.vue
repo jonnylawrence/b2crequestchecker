@@ -84,7 +84,7 @@
 				client_secret: "",
 				token_length: "1",
 				radiosLoA: "L2",
-				redirect_uri: "http://localhost",
+				redirect_uri: "http://",
 				textbox: "{}",
 				jwttoken: "base64signedtoken",
 				radiosTenant: "[SELECT TENANT]",

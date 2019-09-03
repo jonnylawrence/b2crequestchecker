@@ -17,6 +17,6 @@ export default {
 
     json_packet.push(item);
 
-    return json_packet;
+    return json_packet[0];
   }
 };
