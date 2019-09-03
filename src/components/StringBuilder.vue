@@ -2,7 +2,7 @@
 	<div class="container px-lg-5">
 		<div class="row">
 			<div class="col-6">
-				<h2>B2C String Builder</h2>
+				<h2>B2C OpenID Connect Request</h2>
 				<b>Tenant:</b>
 				<input
 					v-model="radiosTenant"
@@ -59,7 +59,9 @@
 				<textarea v-model="textbox" cols="60" style="height: 250px;"></textarea>
 				<br />
 				<br />
-				<small>Author: Jon Sutcliffe V1.0, developed using the client Javascript VUE framework and node.js</small>
+				<small>
+					<b>Author: Jon Sutcliffe V1.0, developed using the client Javascript VUE framework and node.js</b>
+				</small>
 			</div>
 			<div class="col-6">
 				<button class="default" v-on:click="randomstring">Generate Nonce/State</button>
