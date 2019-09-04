@@ -31,7 +31,7 @@
 					<v-text-field v-model="client_secret" label="Client Secret" required></v-text-field>
 					<v-text-field v-model="redirect_uri" label="Redirect URI (your site)" required></v-text-field>
 
-					<v-text-field v-model="token_length" :rules="emailRules" label="Token Length [days]" required></v-text-field>
+					<v-text-field v-model="token_length" label="Token Length [days]" required></v-text-field>
 
 					<v-radio-group
 						v-model="radiosLoA"
@@ -69,7 +69,7 @@
 				<div class="col-6">
 					<v-btn v-on:click="randomstring" elevation="10" rounded="true">Generate Nonce/State</v-btn>
 					<br />
-					<v-textarea v-model="urlrequest" full-width="true" outlined="true" cols="60" auto-grow="true"></v-textarea>
+					<v-textarea v-model="urlrequest" outlined="true" cols="60" auto-grow="true"></v-textarea>
 				</div>
 			</div>
 
@@ -77,6 +77,7 @@
 		</div>
 	</v-app>
 </template>
+
 
 <script>
 	import AuthService from "@/services/AuthService";
@@ -88,7 +89,7 @@
 				client_secret: "",
 				token_length: "1",
 				radiosLoA: "L2",
-				redirect_uri: "https://",
+				redirect_uri: "",
 				textbox: "{}",
 				jwttoken: "base64signedtoken",
 				radiosTenant: "[SELECT_TENANT]",
@@ -140,7 +141,7 @@
 					exp: this.token_length
 				});
 				this.textbox = jwtret;
-				this.Json = jwtret.replace(/(\r\n|\n|\r)/gm);
+				// this.Json = jwtret.replace(/(\r\n|\n|\r)/gm);
 				const response = await AuthService.register({
 					clientid: this.client_secret,
 					jwttoken: this.textbox
