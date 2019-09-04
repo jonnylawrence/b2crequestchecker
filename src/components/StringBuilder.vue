@@ -169,6 +169,9 @@
 			randomstring: function() {
 				this.nonce = this.gen_random(24);
 				this.state = this.gen_random(24);
+			},
+			connectb2c: function() {
+				window.open(this.urlrequest, "_blank");
 			}
 		}
 	};
