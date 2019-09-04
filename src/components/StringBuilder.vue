@@ -8,7 +8,7 @@
 				</v-toolbar>
 			</h2>
 			<small>
-				<b>Author: Jon Sutcliffe V1.0, client Javascript VUE framework and node.js</b>
+				<b>Author: Jon Sutcliffe V1.0, Client:Javascript VUE framework, Server: node.js</b>
 			</small>
 			<div class="row">
 				<div class="col-6">
