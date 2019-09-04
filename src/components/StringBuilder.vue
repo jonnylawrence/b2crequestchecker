@@ -70,6 +70,7 @@
 					<v-btn v-on:click="randomstring" elevation="10" rounded="true">Generate Nonce/State</v-btn>
 					<br />
 					<v-textarea v-model="urlrequest" outlined="true" cols="60" auto-grow="true"></v-textarea>
+					<v-btn v-on:click="connectb2c" elevation="10" rounded="true">Connect</v-btn>
 				</div>
 			</div>
 
