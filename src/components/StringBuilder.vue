@@ -1,77 +1,81 @@
 <template>
-	<div class="container px-lg-5">
-		<div class="row">
-			<div class="col-6">
-				<h2>B2C OpenID Connect Request</h2>
-				<b>Tenant:</b>
-				<input
-					v-model="radiosTenant"
-					type="radio"
-					value="https://uat-account.np.bupaglobal.com/neubgdat01atluat01b2c01.onmicrosoft.com/b2c_1a_bupa-uni-uat-signinsignup/oauth2/v2.0/authorize"
-					id="uat"
-				/>
-				<label for="uat">UAT</label>:
-				<input
-					v-model="radiosTenant"
-					type="radio"
-					value="https://nft-account.np.bupaglobal.com/neubgdat01atlnft01b2c01.onmicrosoft.com/b2c_1a_bupa-uni-nft-signinsignup/oauth2/v2.0/authorize"
-					id="nft"
-				/>
-				<label for="nft">NFT</label>
-				<br />
-				<b>App ID:</b>
-				<input type="text" v-model="appid" />
-				<br />
-				<b>Client Secret:</b>
-				<input type="text" v-model="client_secret" />
-				<br />
-				<b>Redirect URI (your site):</b>
-				<input type="text" v-model="redirect_uri" />
-				<br />
-				<b>Token length in days:</b>
-				<input type="text" v-model="token_length" />
-				<br />
+	<v-app>
+		<div class="container px-lg-5">
+			<h2>
+				<v-toolbar>
+					B2C OpenID Connect URL Builder
+					<br />
+				</v-toolbar>
+			</h2>
+			<small>
+				<b>Author: Jon Sutcliffe V1.0, client Javascript VUE framework and node.js</b>
+			</small>
+			<div class="row">
+				<div class="col-6">
+					<v-radio-group v-model="radiosTenant" label="Tenant" row="true">
+						<v-radio
+							name="radiosTenant"
+							value="https://uat-account.np.bupaglobal.com/neubgdat01atluat01b2c01.onmicrosoft.com/b2c_1a_bupa-uni-uat-signinsignup/oauth2/v2.0/authorize"
+							key="UAT"
+							label="UAT"
+						/>
+						<v-radio
+							name="radiosTenant"
+							value="https://nft-account.np.bupaglobal.com/neubgdat01atlnft01b2c01.onmicrosoft.com/b2c_1a_bupa-uni-nft-signinsignup/oauth2/v2.0/authorize"
+							key="NFT"
+							label="NFT"
+						/>
+					</v-radio-group>
 
-				<b>Level of Access:</b>
-				<input v-model="radiosLoA" type="radio" value="L1" id="L1" />
-				<label for="L1">L1</label>:
-				<input v-model="radiosLoA" type="radio" value="L2" id="L2" />
-				<label for="L2">L2</label>:
-				<input v-model="radiosLoA" type="radio" value="L3" id="L3" />
-				<label for="L3">L3</label>
-				<br />
+					<v-text-field v-model="appid" label="Client ID/App ID" required></v-text-field>
+					<v-text-field v-model="client_secret" label="Client Secret" required></v-text-field>
+					<v-text-field v-model="redirect_uri" label="Redirect URI (your site)" required></v-text-field>
 
-				<b>Language:</b>
-				<input v-model="radiosLocale" type="radio" value="en-GB" id="en-GB" />
-				<label for="en-GB">en-GB</label>:
-				<input v-model="radiosLocale" type="radio" value="zh-ZK" id="zh-HK" />
-				<label for="zh-HK">zh-HK</label>:
-				<br />
+					<v-text-field v-model="token_length" :rules="emailRules" label="Token Length [days]" required></v-text-field>
 
-				<b>Branding:</b>
-				<input v-model="radiosBranding" type="radio" value="europe" id="europe" />
-				<label for="europe">europe</label>:
-				<input v-model="radiosBranding" type="radio" value="hongkong" id="hongkong" />
-				<label for="hongkong">hong kong</label>
-				<br />
-				<br />
-				<button class="default" v-on:click="encodeJWT">Encode JWT</button>
-				<textarea v-model="textbox" cols="60" style="height: 250px;"></textarea>
-				<br />
-				<br />
-				<small>
-					<b>Author: Jon Sutcliffe V1.0, developed using the client Javascript VUE framework and node.js</b>
-				</small>
+					<v-radio-group
+						v-model="radiosLoA"
+						label="Authentication Level"
+						row="true"
+						hint="Different authentication workflows will be executed by the B2C based on this Level of Access"
+					>
+						<v-radio
+							name="radiosLoA"
+							value="L1"
+							key="L1"
+							label="L1"
+							hint="Different authentication workflows will be executed by the B2C based on this Level of Access"
+						/>
+						<v-radio name="radiosLoA" value="L2" key="L2" label="L2" />
+						<v-radio name="radiosLoA" value="L3" key="L3" label="L3" />
+					</v-radio-group>
+
+					<v-radio-group v-model="radiosLocale" label="Locale" row="true">
+						<v-radio name="radiosLocale" value="en-GB" key="en-GB" label="en-GB" />
+						<v-radio name="radiosLocale" value="zh-ZK" key="zh-ZK" label="zh-ZK" />
+					</v-radio-group>
+
+					<v-radio-group v-model="radiosBranding" label="Branding" row="true">
+						<v-radio name="radiosLocale" value="europe" key="europe" label="Europe" />
+						<v-radio name="radiosLocale" value="hongkong" key="hongkong" label="Hong Kong" />
+					</v-radio-group>
+
+					<v-btn v-on:click="encodeJWT" elevation="10" rounded="true">Encode JWT</v-btn>
+					<br />
+
+					<v-textarea v-model="textbox" full-width="true" outlined="true" cols="60" auto-grow="true"></v-textarea>
+					<br />
+				</div>
+				<div class="col-6">
+					<v-btn v-on:click="randomstring" elevation="10" rounded="true">Generate Nonce/State</v-btn>
+					<br />
+					<v-textarea v-model="urlrequest" full-width="true" outlined="true" cols="60" auto-grow="true"></v-textarea>
+				</div>
 			</div>
-			<div class="col-6">
-				<button class="default" v-on:click="randomstring">Generate Nonce/State</button>
-				<br />
-				<textarea v-model="urlrequest" cols="60" style="height: 570px;"></textarea>
-			</div>
+
+			<br />
 		</div>
-
-		<br />
-	</div>
+	</v-app>
 </template>
 
 <script>
@@ -84,10 +88,10 @@
 				client_secret: "",
 				token_length: "1",
 				radiosLoA: "L2",
-				redirect_uri: "http://",
+				redirect_uri: "https://",
 				textbox: "{}",
 				jwttoken: "base64signedtoken",
-				radiosTenant: "[SELECT TENANT]",
+				radiosTenant: "[SELECT_TENANT]",
 				radiosLocale: "en-GB",
 				radiosBranding: "europe",
 				fontColorObject: { color: "blue" },
@@ -95,7 +99,8 @@
 				client_assertion: "JWTtoken",
 				urlrequest: "B2C CONNECTION STRING",
 				nonce: "NONCE",
-				state: "STATE"
+				state: "STATE",
+				Json: ""
 			};
 		},
 		computed: {
@@ -128,20 +133,24 @@
 		},
 		methods: {
 			async encodeJWT() {
-				this.textbox = JSON.stringify(
-					Token.create({
-						LoALevelRequest: this.radiosLoA,
-						iss: this.radiosTenant,
-						aud: this.redirect_uri,
-						exp: this.token_length
-					})
-				);
+				let jwtret = Token.create({
+					LoALevelRequest: this.radiosLoA,
+					iss: this.radiosTenant,
+					aud: this.redirect_uri,
+					exp: this.token_length
+				});
+				this.textbox = jwtret;
+				this.Json = jwtret.replace(/(\r\n|\n|\r)/gm);
 				const response = await AuthService.register({
 					clientid: this.client_secret,
 					jwttoken: this.textbox
 				});
 
 				this.client_assertion = response.data;
+
+				// var JsonObject = JSON.parse(response.data);
+				// console.log(JsonObject);
+				// console.log("wwefwe");
 			},
 			gen_random: function(x) {
 				var s = "";
@@ -163,5 +172,5 @@
 	};
 </script>
 
-<style scoped>
+<style>
 </style>

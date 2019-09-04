@@ -16,7 +16,6 @@ export default {
     item["iat"] = Date.now();
 
     json_packet.push(item);
-
-    return json_packet[0];
+    return JSON.stringify(json_packet[0]);
   }
 };

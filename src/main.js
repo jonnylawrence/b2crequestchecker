@@ -1,19 +1,16 @@
-import "material-design-icons-iconfont/dist/material-design-icons.css";
+import "@mdi/font/css/materialdesignicons.css";
 import Vue from "vue";
-import BootstrapVue from "bootstrap-vue";
+import vuetify from "@/plugins/vuetify";
 import App from "./App.vue";
 import Vuetify from "vuetify";
-import VueRouter from "vue-router";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
-
-Vue.use(BootstrapVue);
+// import VueRouter from "vue-router";
 
 Vue.use(Vuetify, {
   iconfont: "mdi"
 });
-Vue.use(VueRouter);
+// Vue.use(VueRouter);
 
 new Vue({
+  vuetify,
   render: h => h(App)
 }).$mount("#app");

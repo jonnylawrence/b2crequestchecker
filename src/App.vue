@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	import StringBuilder from "./components/StringBuilder.vue";
+	import StringBuilder from "@/components/StringBuilder.vue";
 	export default {
 		name: "app",
 		components: {
