@@ -1,8 +1,8 @@
 <template>
 	<v-app>
 		<div class="container px-lg-5">
+			<jonheader></jonheader>
 			<div class="row">
-				<jonheader></jonheader>
 				<div class="col-6">
 					<v-radio-group v-model="radiosTenant" label="Tenant" row>
 						<v-radio

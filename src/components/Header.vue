@@ -2,8 +2,14 @@
 	<div>
 		<h2>
 			<v-toolbar>
-				B2C OpenID Connect URL Builder
-				<br />
+				<v-toolbar-title>B2C OpenID Connect Builder</v-toolbar-title>
+
+				<div class="flex-grow-1"></div>
+
+				<v-toolbar-items>
+					<v-btn to="/" exact>Home</v-btn>
+					<v-btn to="/document" exact>Document</v-btn>
+				</v-toolbar-items>
 			</v-toolbar>
 		</h2>
 		<small>

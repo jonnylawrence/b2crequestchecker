@@ -14,6 +14,7 @@ export default new Router({
     },
     {
       path: "/document",
+      name: "document",
       component: document
     },
     {
