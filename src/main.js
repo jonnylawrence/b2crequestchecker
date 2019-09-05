@@ -1,5 +1,6 @@
 import "@mdi/font/css/materialdesignicons.css";
 import Vue from "vue";
+import router from "./router";
 import vuetify from "@/plugins/vuetify";
 import BootstrapVue from "bootstrap-vue/dist/bootstrap-vue.esm";
 import App from "./App.vue";
@@ -25,9 +26,9 @@ Vue.component("ValidationObserver", ValidationObserver);
 Vue.use(Vuetify, {
   iconfont: "mdi"
 });
-// Vue.use(VueRouter);
 
 new Vue({
   vuetify,
+  router,
   render: h => h(App)
 }).$mount("#app");

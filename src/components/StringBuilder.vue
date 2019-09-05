@@ -1,16 +1,8 @@
 <template>
 	<v-app>
 		<div class="container px-lg-5">
-			<h2>
-				<v-toolbar>
-					B2C OpenID Connect URL Builder
-					<br />
-				</v-toolbar>
-			</h2>
-			<small>
-				<b>Author: Jon Sutcliffe V1.0, Client:Javascript VUE framework, Server: node.js</b>
-			</small>
 			<div class="row">
+				<jonheader></jonheader>
 				<div class="col-6">
 					<v-radio-group v-model="radiosTenant" label="Tenant" row>
 						<v-radio
@@ -90,7 +82,12 @@
 <script>
 	import AuthService from "@/services/AuthService";
 	import Token from "@/services/Token";
+	import jonheader from "@/components/Header.vue";
+
 	export default {
+		components: {
+			jonheader
+		},
 		data() {
 			return {
 				appid: "",
