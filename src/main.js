@@ -8,8 +8,19 @@ import Vuetify from "vuetify";
 // Import the styles directly. (Or you could add them via script tags.)
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import { extend } from "vee-validate";
+import { required } from "vee-validate/dist/rules";
+import { ValidationProvider } from "vee-validate";
+import { ValidationObserver } from "vee-validate";
+
+extend("required", {
+  ...required,
+  message: "{field} is required"
+});
 
 Vue.use(BootstrapVue);
+Vue.component("ValidationProvider", ValidationProvider);
+Vue.component("ValidationObserver", ValidationObserver);
 
 Vue.use(Vuetify, {
   iconfont: "mdi"
