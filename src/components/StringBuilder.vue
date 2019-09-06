@@ -60,6 +60,7 @@
 					<v-radio-group v-model="radiosBranding" label="Branding" row>
 						<v-radio name="radiosLocale" value="europe" key="europe" label="Europe" />
 						<v-radio name="radiosLocale" value="hongkong" key="hongkong" label="Hong Kong" />
+						<v-radio name="radiosLocale" value="jontestbrand" key="jontestbrand" label="Test" />
 					</v-radio-group>
 
 					<v-textarea v-model="textbox" full-width outlined cols="60" auto-grow></v-textarea>
