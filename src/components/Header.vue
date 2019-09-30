@@ -9,6 +9,7 @@
 				<v-toolbar-items>
 					<v-btn to="/" exact>Home</v-btn>
 					<v-btn to="/document" exact>Document</v-btn>
+					<v-btn v-if="$auth.isAuthenticated" to="/profile" exact>Profile</v-btn>
 				</v-toolbar-items>
 			</v-toolbar>
 		</h2>

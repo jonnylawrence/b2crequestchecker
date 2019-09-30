@@ -1,6 +1,14 @@
 <template>
 	<v-app>
-		<div class="container px-lg-5">
+		<!-- Check that the SDK client is not currently loading before accessing is methods -->
+		<div v-if="!$auth.loading">
+			<!-- show login when not authenticated -->
+			<button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
+			<!-- show logout when authenticated -->
+			<button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
+		</div>
+
+		<div class="container px-lg-5" v-if="$auth.isAuthenticated">
 			<jonheader></jonheader>
 			<div class="row">
 				<div class="col-6">
@@ -136,6 +144,16 @@
 			}
 		},
 		methods: {
+			// Log the user in
+			login() {
+				this.$auth.loginWithRedirect();
+			},
+			// Log the user out
+			logout() {
+				this.$auth.logout({
+					returnTo: window.location.origin
+				});
+			},
 			async encodeJWT() {
 				let jwtret = Token.create({
 					LoALevelRequest: this.radiosLoA,
